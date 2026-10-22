@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NiktoBlox // GX 联络终端</title>
+  <meta name="description" content="NiktoBlox 联络我表单 - Opera GX 电竞科技主题">
+
+  <!-- Google Fonts & Chinese Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon with Opera GX Crimson Shield -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,6 94,28 94,72 50,94 6,72 6,28%22 fill=%22%230d0f16%22 stroke=%22%23fa1e4e%22 stroke-width=%228%22/><text y=%22.9em%22 x=%22.18em%22 font-size=%2250%22 font-family=%22Orbitron%22 fill=%22%23fa1e4e%22 font-weight=%22bold%22>GX</text></svg>">
+</head>
+<body class="gx-theme">
+  <!-- Opera GX Cyber Background -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="scanlines"></div>
+
+  <!-- Header Bar -->
+  <header class="gx-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="gx-logo-badge">
+          <span class="gx-symbol">GX</span>
+          <span class="gx-pulse"></span>
+        </div>
+        <div class="brand-text">
+          <span class="sys-title">NIKTOBLOX // GX TERMINAL</span>
+          <span class="sys-status"><span class="status-dot"></span> 在线状态</span>
+        </div>
+      </div>
+
+      <!-- Audio & Control Buttons -->
+      <div class="header-controls">
+        <button type="button" id="audio-toggle-btn" class="ctrl-btn" title="切换音效" aria-label="切换音效">
+          <svg class="audio-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg class="audio-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <span class="ctrl-btn-text">GX 音效</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gx-main">
+    <div class="hud-corner hud-top-left"></div>
+    <div class="hud-corner hud-top-right"></div>
+    <div class="hud-corner hud-bottom-left"></div>
+    <div class="hud-corner hud-bottom-right"></div>
+
+    <div class="card-container">
+      <!-- Title Section -->
+      <section class="form-hero">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>OPERA GX REDLINE PROTOCOL // SECURE</span>
+        </div>
+        <h1 class="main-title">联系我表单</h1>
+        <p class="subtitle">填写以下信息，留言将即时加密推送至指定邮箱与终端。</p>
+        <div class="target-mail-indicator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span class="mail-label">接收邮箱：</span>
+          <span class="mail-address">boedblox1112@gmail.com</span>
+        </div>
+      </section>
+
+      <!-- Status Toast / Alert -->
+      <div id="status-banner" class="status-banner" role="alert" style="display: none;">
+        <div class="banner-icon"></div>
+        <div class="banner-text"></div>
+        <button class="banner-close" type="button" aria-label="关闭提示">&times;</button>
+      </div>
+
+      <!-- Contact Form -->
+      <form id="contact-form" novalidate>
+        <!-- FormSubmit hidden configs -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" id="hidden-subject" name="_subject" value="[NiktoBlox GX表单] 收到新的联络留言">
+
+        <!-- 1. 您的昵称 -->
+        <div class="form-group" id="group-name">
+          <label for="input-name" class="form-label">
+            <span class="label-num">01 //</span>
+            <span class="label-text">您的昵称</span>
+            <span class="req-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="input-name" 
+              name="name" 
+              required 
+              autocomplete="name"
+              placeholder="请输入您的昵称或名字..."
+            >
+          </div>
+          <span class="field-error" data-error-for="name"></span>
+        </div>
+
+        <!-- 2. 您的电子邮箱 -->
+        <div class="form-group" id="group-email">
+          <label for="input-email" class="form-label">
+            <span class="label-num">02 //</span>
+            <span class="label-text">您的电子邮箱</span>
+            <span class="req-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="input-email" 
+              name="email" 
+              required 
+              autocomplete="email"
+              placeholder="example@mail.com"
+            >
+          </div>
+          <span class="field-error" data-error-for="email"></span>
+        </div>
+
+        <!-- 3. 你是怎么找到我的？ -->
+        <div class="form-group" id="group-source">
+          <label for="select-source" class="form-label">
+            <span class="label-num">03 //</span>
+            <span class="label-text">你是怎么找到我的？</span>
+            <span class="req-star">*</span>
+          </label>
+          <div class="select-wrapper">
+            <select id="select-source" name="source" required>
+              <option value="" disabled selected>-- 请选择来源平台 / 途径 --</option>
+              <option value="QQ">1. QQ</option>
+              <option value="Gitee">2. Gitee</option>
+              <option value="Github">3. Github</option>
+              <option value="Discord">4. Discord</option>
+              <option value="官方社区">5. 官方社区</option>
+              <option value="其他">6. 其他（点击后输入具体来源）</option>
+            </select>
+            <div class="select-arrow">▼</div>
+          </div>
+          <span class="field-error" data-error-for="source"></span>
+
+          <!-- Dynamic Other Source Input -->
+          <div id="dynamic-source-container" class="dynamic-field" style="display: none;">
+            <label for="input-source-other" class="sub-label">请填写具体来源：</label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="input-source-other" 
+                name="source_other" 
+                placeholder="请说明您是从哪里了解到我的..."
+              >
+            </div>
+            <span class="field-error" data-error-for="source_other"></span>
+          </div>
+        </div>
+
+        <!-- 4. 联系类型 -->
+        <div class="form-group" id="group-type">
+          <label for="select-type" class="form-label">
+            <span class="label-num">04 //</span>
+            <span class="label-text">联系类型</span>
+            <span class="req-star">*</span>
+          </label>
+          <div class="select-wrapper">
+            <select id="select-type" name="contact_type" required>
+              <option value="" disabled selected>-- 请选择联系类型 --</option>
+              <option value="一般联系">1. 一般联系</option>
+              <option value="紧急联系">2. 紧急联系</option>
+              <option value="合作">3. 合作</option>
+              <option value="送礼">4. 送礼</option>
+              <option value="赞助">5. 赞助</option>
+              <option value="其他">6. 其他（点击后输入具体类型）</option>
+            </select>
+            <div class="select-arrow">▼</div>
+          </div>
+          <span class="field-error" data-error-for="contact_type"></span>
+
+          <!-- Dynamic Other Type Input -->
+          <div id="dynamic-type-container" class="dynamic-field" style="display: none;">
+            <label for="input-type-other" class="sub-label">请详细说明联系类型：</label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="input-type-other" 
+                name="contact_type_other" 
+                placeholder="请详细说明您的联系目的或项目..."
+              >
+            </div>
+            <span class="field-error" data-error-for="contact_type_other"></span>
+          </div>
+        </div>
+
+        <!-- 5. 消息内容 -->
+        <div class="form-group" id="group-message">
+          <div class="textarea-header">
+            <label for="textarea-message" class="form-label">
+              <span class="label-num">05 //</span>
+              <span class="label-text">消息内容</span>
+              <span class="req-star">*</span>
+            </label>
+            <span class="hint-text">（支持换行、可自由拉伸输入框）</span>
+          </div>
+          <div class="textarea-wrapper">
+            <textarea 
+              id="textarea-message" 
+              name="message" 
+              rows="6" 
+              required
+              placeholder="请在此输入您的详细消息内容..."
+            ></textarea>
+          </div>
+          <div class="textarea-footer">
+            <span class="char-counter"><span id="char-count">0</span> 字符</span>
+            <span class="field-error" data-error-for="message"></span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-submit-container">
+          <button type="submit" id="submit-btn" class="gx-btn-primary">
+            <span class="btn-cut-top-left"></span>
+            <span class="btn-cut-bottom-right"></span>
+            <span class="btn-glow"></span>
+            <span class="btn-content">
+              <span class="btn-spinner" style="display: none;"></span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span class="btn-text">发送联络消息</span>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Cyber Footer -->
+  <footer class="gx-footer">
+    <div class="footer-inner">
+      <div class="footer-status">
+        <span class="status-indicator"></span>
+        <span>OPERA GX REDLINE EDITION // VER 3.0.0</span>
+      </div>
+      <div class="footer-copy">
+        &copy; <span id="current-year"></span> NIKTOBLOX PROTOCOL. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
