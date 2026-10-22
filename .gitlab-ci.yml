@@ -1,0 +1,13 @@
+# GitCode Pages 自动部署配置文件
+# 适用于静态 HTML / CSS / JS 项目
+
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r index.html style.css script.js public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'

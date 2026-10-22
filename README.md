@@ -42,60 +42,46 @@
 
 ---
 
-## 🚀 部署与上线指南（使用 Gitee / Gitee Pages）
+## 🚀 部署与上线指南（使用 GitCode / GitCode Pages）
 
-本项目为纯静态前端页面（HTML/CSS/JS），完美支持通过 **Gitee Pages** 在国内免翻墙高速访问！
+本项目已针对 **GitCode Pages** 进行专属适配（内置 `.gitlab-ci.yml` 自动流水线配置）。
 
 ---
 
-### 步骤 1：将代码同步到 Gitee 仓库
+### 步骤 1：同步或推送代码到 GitCode
 
-您可以通过以下两种方式之一，将 GitHub 上的代码导入到 Gitee：
-
-#### 方式 A：在 Gitee 直接一键从 GitHub 导入（最简单）
-1. 登录 [Gitee (码云)](https://gitee.com/)。
-2. 点击右上角 **「+」** ➔ 选择 **「从 GitHub / GitLab 导入仓库」**。
-3. 输入您的 GitHub 仓库地址：
-   ```
-   https://github.com/NiktoBlox/niktoblox-contact-form-cn
-   ```
-4. 点击 **「导入」** 即可完成同步。
-
-#### 方式 B：从本地 Git 直接推送到 Gitee
-若您已经在 Gitee 上创建了同名仓库 `niktoblox-contact-form-cn`：
+#### 方式 A：从本地直接推送到 GitCode
+在本地终端执行：
 ```powershell
-# 1. 进入本地项目目录
 cd "C:\Users\user\.gemini\antigravity\scratch\niktoblox-contact-form-cn"
 
-# 2. 添加 Gitee 远端地址（请将 <您的Gitee用户名> 替换为您在 Gitee 的用户名）
-git remote add gitee https://gitee.com/<您的Gitee用户名>/niktoblox-contact-form-cn.git
+# 添加 GitCode 远端
+git remote add gitcode https://gitcode.com/NiktoBlox/niktoblox-contact-form-cn.git
 
-# 3. 推送代码到 Gitee 的 main 分支
-git push -u gitee main
+# 推送到 GitCode
+git push -u gitcode main
 ```
+
+#### 方式 B：在 GitCode 仓库中从 GitHub 强制同步
+若仓库是通过 GitHub 导入的，直接在 GitCode 仓库页面右侧点击 **「刷新 / 同步」** 按钮，拉取最新包含 `.gitlab-ci.yml` 的代码。
 
 ---
 
-### 步骤 2：开启 Gitee Pages 免费网站托管
+### 步骤 2：自动触发 GitCode Pages 流水线部署
 
-1. 在 Gitee 进入您的 `niktoblox-contact-form-cn` 仓库页面。
-2. 点击仓库导航栏中的 **「服务」** ➔ 选择 **「Gitee Pages」**。
-3. 部署设置：
-   - **部署分支**：选择 `main`。
-   - **部署目录**：留空（保持默认根目录）。
-4. 点击 **「启动」**（或 **「更新」**）。
-5. 部署完成后，页面上方会直接显示您的专属访问网址：
-   `https://<您的Gitee用户名>.gitee.io/niktoblox-contact-form-cn/`
-   访客在任意网络环境下均可极速秒开！
+因为项目中已内置了 [`.gitlab-ci.yml`](.gitlab-ci.yml) 配置文件：
+1. 每次代码推送到 `main` 分支后，GitCode 会自动运行 **CI/CD 流水线**（点击左侧菜单的 **「CI/CD」➔「流水线 Pipelines」** 可以看到部署进度，显示绿色对勾即代表成功）。
+2. 流水线执行完毕后，前往仓库左侧菜单的 **「设置」➔「Pages」**（或直接查看仓库服务中的 Pages）。
+3. 页面上会显示分配给您的专属静态网站链接（例如：`https://niktoblox.gitcode.host/niktoblox-contact-form-cn/`）。
 
 ---
 
 ### 步骤 3：首次启用接收邮箱（重要）
 
-1. 打开刚刚部署好的 Gitee Pages 网页，填写一笔测试信息并点击「发送联络消息」。
+1. 打开部署好的 GitCode Pages 网页，填写一笔测试信息并点击「发送联络消息」。
 2. 打开您的 `boedblox1112@gmail.com` 邮箱。
 3. 您会收到一封来自 FormSubmit 的确认信，点击信中的 **「Activate Form」**。
-4. 激活完成后，今后所有在 Gitee Pages 提交的表单信息，都会直接以结构化表格发送至您的邮箱。
+4. 激活完成后，今后所有在 GitCode Pages 提交的表单信息，都会直接以结构化表格发送至您的邮箱。
 
 ---
 
