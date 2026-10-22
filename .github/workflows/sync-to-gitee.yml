@@ -1,0 +1,25 @@
+name: Sync to Gitee
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  mirror-to-gitee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror to Gitee
+        uses: Yikun/gitee-mirror-action@v0.14
+        with:
+          src: github/NiktoBlox
+          dst: gitee/${{ secrets.GITEE_USER || 'NiktoBlox' }}
+          dst_key: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_PASSWORD }}
+          static_list: "niktoblox-contact-form-cn"
+          force_update: true

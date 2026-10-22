@@ -42,27 +42,60 @@
 
 ---
 
-## 🚀 部署与上线指南
+## 🚀 部署与上线指南（使用 Gitee / Gitee Pages）
 
-### 1. 提交并推送到 GitHub 仓库
+本项目为纯静态前端页面（HTML/CSS/JS），完美支持通过 **Gitee Pages** 在国内免翻墙高速访问！
 
-在本地终端执行：
+---
 
+### 步骤 1：将代码同步到 Gitee 仓库
+
+您可以通过以下两种方式之一，将 GitHub 上的代码导入到 Gitee：
+
+#### 方式 A：在 Gitee 直接一键从 GitHub 导入（最简单）
+1. 登录 [Gitee (码云)](https://gitee.com/)。
+2. 点击右上角 **「+」** ➔ 选择 **「从 GitHub / GitLab 导入仓库」**。
+3. 输入您的 GitHub 仓库地址：
+   ```
+   https://github.com/NiktoBlox/niktoblox-contact-form-cn
+   ```
+4. 点击 **「导入」** 即可完成同步。
+
+#### 方式 B：从本地 Git 直接推送到 Gitee
+若您已经在 Gitee 上创建了同名仓库 `niktoblox-contact-form-cn`：
 ```powershell
+# 1. 进入本地项目目录
 cd "C:\Users\user\.gemini\antigravity\scratch\niktoblox-contact-form-cn"
 
-git add .
-git commit -m "feat: complete Opera GX themed simplified chinese contact form"
-git push origin main
+# 2. 添加 Gitee 远端地址（请将 <您的Gitee用户名> 替换为您在 Gitee 的用户名）
+git remote add gitee https://gitee.com/<您的Gitee用户名>/niktoblox-contact-form-cn.git
+
+# 3. 推送代码到 Gitee 的 main 分支
+git push -u gitee main
 ```
 
-### 2. 免费在 Vercel 上线发布
+---
 
-1. 打开 [Vercel](https://vercel.com/) 并使用 GitHub 账号登录。
-2. 点击 **Add New...** ➔ **Project**。
-3. 选择仓库 **`NiktoBlox/niktoblox-contact-form-cn`** 并点击 **Import**。
-4. Framework Preset 保持 **Other**（纯静态网页），直接点击 **Deploy**。
-5. 约 10 秒后即可获得免费的全局 HTTPS 访问域名（例如：`niktoblox-contact-form-cn.vercel.app`）。
+### 步骤 2：开启 Gitee Pages 免费网站托管
+
+1. 在 Gitee 进入您的 `niktoblox-contact-form-cn` 仓库页面。
+2. 点击仓库导航栏中的 **「服务」** ➔ 选择 **「Gitee Pages」**。
+3. 部署设置：
+   - **部署分支**：选择 `main`。
+   - **部署目录**：留空（保持默认根目录）。
+4. 点击 **「启动」**（或 **「更新」**）。
+5. 部署完成后，页面上方会直接显示您的专属访问网址：
+   `https://<您的Gitee用户名>.gitee.io/niktoblox-contact-form-cn/`
+   访客在任意网络环境下均可极速秒开！
+
+---
+
+### 步骤 3：首次启用接收邮箱（重要）
+
+1. 打开刚刚部署好的 Gitee Pages 网页，填写一笔测试信息并点击「发送联络消息」。
+2. 打开您的 `boedblox1112@gmail.com` 邮箱。
+3. 您会收到一封来自 FormSubmit 的确认信，点击信中的 **「Activate Form」**。
+4. 激活完成后，今后所有在 Gitee Pages 提交的表单信息，都会直接以结构化表格发送至您的邮箱。
 
 ---
 
